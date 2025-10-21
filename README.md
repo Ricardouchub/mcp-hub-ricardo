@@ -1,6 +1,6 @@
 # MCP Hub Personal
 
-**Servidor MCP personalizado** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) directamente con entornos compatibles como **VSCode Copilot** y **Codex**.
+**Servidor MCP personalizado** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) directamente con clientes compatibles como **VSCode Copilot** y **Codex**.
 
 ---
 
@@ -20,6 +20,7 @@ Todo el servidor está desarrollado con el framework **FastMCP**, sin dependenci
 
 ## 🧩 Arquitectura
 
+```
 mcp-hub-ricardo/
 ├── mcp_hub/
 │   ├── auth/
@@ -39,6 +40,7 @@ mcp-hub-ricardo/
 │   └── token.google.json           # Token generado tras autenticación
 ├── pyproject.toml
 └── README.txt                      # Este archivo
+```
 
 ---
 
@@ -73,13 +75,15 @@ uv pip install -e .
 
 ## Ejecución local
 
+```
 uv run mcp dev mcp_hub/server.py
-
+```
 Esto abrirá el **Inspector MCP** para probar herramientas y verificar las respuestas.
 
 O directamente por **STDIO** (modo producción):
-
+```
 uv run mcp run stdio mcp_hub/server.py
+```
 
 ---
 
@@ -90,28 +94,7 @@ uv run mcp run stdio mcp_hub/server.py
 3. Reinicia VSCode.
 4. Usa prompts como:
    > “Léeme los últimos 5 correos no leídos y guárdalos en README.md.”
-
----
-
-## Integración con Codex
-
-Archivo de configuración `~/.codex/config.toml`:
-
-model = "gpt-5-codex"
-model_reasoning_effort = "medium"
-
-[mcp_servers.mcp_hub_ricardo]
-command = "C:/Users/fabri/Desktop/Portfolio/mcp-hub-ricardo/.venv/Scripts/mcp.exe"
-args = ["run", "--transport", "stdio", "C:/Users/fabri/Desktop/Portfolio/mcp-hub-ricardo/mcp_hub/server.py"]
-cwd = "C:/Users/fabri/Desktop/Portfolio/mcp-hub-ricardo"
-startup_timeout_sec = 60
-
-[mcp_servers.mcp_hub_ricardo.env]
-GOOGLE_CREDENTIALS_PATH = "C:/Users/fabri/Desktop/Portfolio/mcp-hub-ricardo/secrets/credentials.google.json"
-GOOGLE_TOKEN_PATH       = "C:/Users/fabri/Desktop/Portfolio/mcp-hub-ricardo/data/token.google.json"
-GOOGLE_SCOPES           = "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/drive.metadata.readonly"
-GITHUB_TOKEN            = "ghp_xxxxxxxxxxxxxxxxxxxxx"
-
+   
 ---
 
 ## Ejemplo de uso (en VSCode / Codex)
