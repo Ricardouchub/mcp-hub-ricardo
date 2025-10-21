@@ -1,5 +1,0 @@
-Para autorizar google y generar data/token.google.json:
-uv run python -c "from mcp_hub.tools.calendar_tool import calendar_upcoming; print(calendar_upcoming(3))"
-
-****Eliminar token.google.json si se cambia el scope en google.
-
