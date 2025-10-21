@@ -35,7 +35,7 @@ mcp-hub-ricardo/
 │   │   └── mcp.py                  # Instancia central de FastMCP
 │   └── server.py                   # Punto de entrada del servidor MCP
 ├── secrets/
-│   └── credentials.google.json     # Credenciales OAuth2 
+│   └── credentials.google.json     # Crear carpeta secrets y dentro archivo de credenciales OAuth2 
 ├── data/
 │   └── token.google.json           # Token generado tras autenticación
 ├── pyproject.toml
@@ -56,10 +56,12 @@ mcp-hub-ricardo/
 
 ## Instalación
 
+```
 git clone https://github.com/Ricardouchub/mcp-hub-ricardo.git
 cd mcp-hub-ricardo
 uv sync
 uv pip install -e .
+```
 
 ---
 
