@@ -107,17 +107,6 @@ uv run mcp run stdio mcp_hub/server.py
 
 <img width="700" src="img/MPC Inspector.png" alt="Main"/>
 
----
-
-## Stack
-
-| Componente | Uso |
-|-------------|-----|
-| **FastMCP** | Framework MCP Server |
-| **uv** | Entorno Python ultrarrápido |
-| **Google API Client** | Acceso a Gmail, Drive, Calendar |
-| **PyGithub** | Conexión con API de GitHub |
-| **VSCode CLI** | Acceso a entorno local de VSCode |
 
 ---
 
