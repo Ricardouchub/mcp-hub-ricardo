@@ -102,8 +102,11 @@ uv run mcp run stdio mcp_hub/server.py
 ## Ejemplo de uso (en VSCode / Codex)
 
 > Lee los próximos 3 eventos de mi calendario y crea una nota con ellos.
+
 > Lista mis últimos 5 correos no leídos.
+
 > Abre la carpeta actual en VSCode.
+
 > Crea un issue titulado “Optimizar autenticación de Google” en mi repo principal.
 
 ---
@@ -122,12 +125,8 @@ uv run mcp run stdio mcp_hub/server.py
 
 ## Autor
 
-**Ricardo Urdaneta**
-_Data Analyst / Data Engineer / Data Scientist_
-GitHub: https://github.com/Ricardouchub
+**Ricardo Urdaneta**  
 
----
+[LinkedIn](https://www.linkedin.com/in/ricardourdanetacastro/) | [GitHub](https://github.com/Ricardouchub)  
 
-## Licencia
 
-MIT License © 2025 Ricardo Urdaneta
