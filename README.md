@@ -1,6 +1,6 @@
 # MCP Hub Personal
 
-**Servidor MCP personalizado** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) directamente con clientes compatibles como **VSCode Copilot** y **Codex**.
+**Servidor MCP personalizado** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) directamente con clientes compatibles como **VSCode Copilot**, **Codex**, **Claude**.
 
 ---
 
