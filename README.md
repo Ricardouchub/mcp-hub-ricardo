@@ -35,11 +35,11 @@ mcp-hub-ricardo/
 │   │   └── mcp.py                  # Instancia central de FastMCP
 │   └── server.py                   # Punto de entrada del servidor MCP
 ├── secrets/
-│   └── credentials.google.json     # Credenciales OAuth2 (no se versionan)
+│   └── credentials.google.json     # Credenciales OAuth2 
 ├── data/
 │   └── token.google.json           # Token generado tras autenticación
 ├── pyproject.toml
-└── README.txt                      # Este archivo
+└── .env.examples
 ```
 
 ---
