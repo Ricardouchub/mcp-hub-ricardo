@@ -1,10 +1,23 @@
 # MCP Hub Personal
 
+![Status](https://img.shields.io/badge/Status-Active-22C55E?logo=statuspage&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![uv](https://img.shields.io/badge/uv-Python%20env-3E4B9E?logo=python&logoColor=white)
+![FastMCP](https://img.shields.io/badge/MCP-FastMCP-0C7D9D?logo=protocol&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-PyGithub-181717?logo=github&logoColor=white)
+![VSCode](https://img.shields.io/badge/VSCode-Client-007ACC?logo=visualstudiocode&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-Client-6B7280?logo=apachespark&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-Client-8A2BE2?logo=anthropic&logoColor=white)
+
+
+
+
+
 **MCP Server personal** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) con clientes compatibles como **VSCode Copilot**, **Codex** y **Claude for Desktop**.
 
 ---
 
-## Descripcion general
+## Descripcion
 
 Este proyecto implementa un **MCP Server multiproposito** que actua como hub local para interactuar con los siguientes servicios:
 
@@ -18,7 +31,7 @@ Todo el servidor esta construido con el framework **FastMCP**, sin depender de D
 
 ---
 
-## Tool list
+## Lista de Tools
 
 | Servicio | Tools | API/CLI |
 |----------|-------|---------|
@@ -109,7 +122,6 @@ uv run mcp run stdio mcp_hub/server.py
 - [FastMCP](https://github.com/modelcontextprotocol/servers) como framework MCP.
 - Google API Client (`google-api-python-client`, `google-auth-oauthlib`) para Gmail/Calendar/Drive.
 - [PyGithub](https://pygithub.readthedocs.io/) para interacciones con GitHub.
-- CLI oficial de VSCode (`code`) para acciones locales.
 
 ---
 
@@ -130,8 +142,9 @@ uv run mcp run stdio mcp_hub/server.py
 <img width="700" src="img/Mpc_inspector.png" alt="Main"/>
 
 
-*Proximamente: roadmap*
+---
 
+*Proximamente: roadmap*
 
 ---
 
