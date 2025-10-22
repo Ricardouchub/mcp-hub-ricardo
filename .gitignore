@@ -146,6 +146,19 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# Secrets/
+data/token.google.json
+secrets/credentials.google.json
+
+# UV
+uv.lock
+
+# Instructions
+Instruc
+
+# Agents
+AGENTS.md
+
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -179,9 +192,4 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
-data/token.google.json
-secrets/credentials.google.json
-uv.lock
-Instrucciones
-Instruc
-Instrucciones.txt
+
