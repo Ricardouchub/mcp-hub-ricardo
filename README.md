@@ -114,10 +114,16 @@ uv run mcp run stdio mcp_hub/server.py
 ---
 
 
-## Ejemplo de uso (Copilot / Codex / Claude)
+## Ejemplo de uso 
 
+### Copilot (VSCode)
 <img width="700" src="img/Copilot_example.png" alt="Main"/>
-<img width="400" src="img/Claude_example.png" alt="Main"/> <img width="400" src="img/Codex_example.png" alt="Main"/>
+
+### Claude (desktop)
+<img width="400" src="img/Claude_example.png" alt="Main"/> 
+
+### Codex (VSCode)
+<img width="400" src="img/Codex_example.png" alt="Main"/>
 
 ## MCP Inspector
 
