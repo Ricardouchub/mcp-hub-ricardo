@@ -193,4 +193,8 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Agents
 AGENTS.md
+
+# Roadmap
+roadmap.pdf
