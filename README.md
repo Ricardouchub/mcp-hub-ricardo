@@ -20,13 +20,13 @@ Todo el servidor esta construido con el framework **FastMCP**, sin depender de D
 
 ## Tool list
 
-| Servicio | Tools | API/CLI |
-|----------|-------|---------|
-| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 |
-| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 | 
+| Servicio | Tools | API/CLI | Permisos |
+|----------|-------|---------|----------|
+| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 | `gmail.readonly`, `gmail.modify`, `gmail.send` |
+| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 | `calendar` |
 | Drive | `drive_search`, `drive_create_file`, `drive_update_file`, `drive_download_file`, `drive_delete_file`, `drive_share_file` | Drive API v3 | `drive`, `drive.metadata.readonly` |
-| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub |
-| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) |
+| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub | `repo` |
+| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) | Local CLI |
 
 ---
 
@@ -34,24 +34,24 @@ Todo el servidor esta construido con el framework **FastMCP**, sin depender de D
 
 ```
 mcp-hub-ricardo/
-├── mcp_hub/
-│   ├── auth/
-│   │   └── google_auth.py          # Manejo de OAuth2 para las APIs de Google
-│   ├── tools/
-│   │   ├── calendar_tool.py        # Endpoints de Calendar
-│   │   ├── drive_tool.py           # Endpoints de Drive
-│   │   ├── gmail_tool.py           # Endpoints de Gmail
-│   │   ├── github_tool.py          # Integracion con la API de GitHub
-│   │   └── vscode_tool.py          # Acciones locales sobre VSCode
-│   ├── core/
-│   │   └── mcp.py                  # Instancia central de FastMCP
-│   └── server.py                   # Punto de entrada del servidor MCP
-├── secrets/
-│   └── credentials.google.json     # Credenciales OAuth2 (crear manualmente)
-├── data/
-│   └── token.google.json           # Token generado tras la autenticacion inicial
-├── pyproject.toml
-└── .env.example
+â”œâ”€â”€ mcp_hub/
+â”‚   â”œâ”€â”€ auth/
+â”‚   â”‚   â””â”€â”€ google_auth.py          # Manejo de OAuth2 para las APIs de Google
+â”‚   â”œâ”€â”€ tools/
+â”‚   â”‚   â”œâ”€â”€ calendar_tool.py        # Endpoints de Calendar
+â”‚   â”‚   â”œâ”€â”€ drive_tool.py           # Endpoints de Drive
+â”‚   â”‚   â”œâ”€â”€ gmail_tool.py           # Endpoints de Gmail
+â”‚   â”‚   â”œâ”€â”€ github_tool.py          # Integracion con la API de GitHub
+â”‚   â”‚   â””â”€â”€ vscode_tool.py          # Acciones locales sobre VSCode
+â”‚   â”œâ”€â”€ core/
+â”‚   â”‚   â””â”€â”€ mcp.py                  # Instancia central de FastMCP
+â”‚   â””â”€â”€ server.py                   # Punto de entrada del servidor MCP
+â”œâ”€â”€ secrets/
+â”‚   â””â”€â”€ credentials.google.json     # Credenciales OAuth2 (crear manualmente)
+â”œâ”€â”€ data/
+â”‚   â””â”€â”€ token.google.json           # Token generado tras la autenticacion inicial
+â”œâ”€â”€ pyproject.toml
+â””â”€â”€ .env.example
 ```
 
 ---
@@ -122,6 +122,10 @@ uv run mcp run stdio mcp_hub/server.py
 ## MCP Inspector
 
 <img width="700" src="img/Mpc_inspector.png" alt="Main"/>
+
+
+*Proximamente: roadmap*
+
 
 ---
 
