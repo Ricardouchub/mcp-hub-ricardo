@@ -20,7 +20,7 @@ Todo el servidor esta construido con el framework **FastMCP**, sin depender de D
 
 ## Tool list
 
-| Servicio | Tools | API/CLI | Permisos |
+| Servicio | Tools | API/CLI |
 |----------|-------|---------|
 | Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 | `gmail.readonly`, `gmail.modify`, `gmail.send` |
 | Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 | `calendar` |
