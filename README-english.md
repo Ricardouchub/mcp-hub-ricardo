@@ -1,5 +1,14 @@
 # Personal MCP Hub
 
+![Status](https://img.shields.io/badge/Status-Active-22C55E?logo=statuspage&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![uv](https://img.shields.io/badge/uv-Python%20env-3E4B9E?logo=python&logoColor=white)
+![FastMCP](https://img.shields.io/badge/MCP-FastMCP-0C7D9D?logo=protocol&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-PyGithub-181717?logo=github&logoColor=white)
+![VSCode](https://img.shields.io/badge/VSCode-Client-007ACC?logo=visualstudiocode&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-Client-6B7280?logo=apachespark&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-Client-8A2BE2?logo=anthropic&logoColor=white)
+
 **Personal MCP Server** to integrate everyday tools (Gmail, Google Calendar, Drive, VSCode, and GitHub) with clients such as **VSCode Copilot**, **Codex**, and **Claude for Desktop**.
 
 ---
