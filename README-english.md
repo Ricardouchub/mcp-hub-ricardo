@@ -1,0 +1,137 @@
+# Personal MCP Hub
+
+**Personal MCP Server** to integrate everyday tools (Gmail, Google Calendar, Drive, VSCode, and GitHub) with clients such as **VSCode Copilot**, **Codex**, and **Claude for Desktop**.
+
+---
+
+## Overview
+
+This project implements a **multi-purpose MCP Server** that acts as a local hub to interact with:
+
+- Gmail: list messages, read content, send emails, manage labels, and attach files.
+- Google Calendar: list events, create/update/delete meetings, and export them to `.ics`.
+- Google Drive: search, create, update, download, delete, and share files.
+- Local VSCode: open files/folders, manage extensions, search text, and run commands or git actions through the VSCode CLI.
+- GitHub: list repositories, create issues, manage pull requests, branches, commits, and releases.
+
+The entire server is built on **FastMCP**, without Docker or additional external services.
+
+---
+
+## Tool List
+
+| Service | Tools | API/CLI | Permissions |
+|---------|-------|---------|-------------|
+| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 | `gmail.readonly`, `gmail.modify`, `gmail.send` |
+| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 | `calendar` |
+| Drive | `drive_search`, `drive_create_file`, `drive_update_file`, `drive_download_file`, `drive_delete_file`, `drive_share_file` | Drive API v3 | `drive`, `drive.metadata.readonly` |
+| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub | `repo` |
+| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) | Local CLI |
+
+---
+
+## Architecture
+
+```
+mcp-hub-ricardo/
+├── mcp_hub/
+│   ├── auth/
+│   │   └── google_auth.py          # OAuth2 handling for Google APIs
+│   ├── tools/
+│   │   ├── calendar_tool.py        # Calendar endpoints
+│   │   ├── drive_tool.py           # Drive endpoints
+│   │   ├── gmail_tool.py           # Gmail endpoints
+│   │   ├── github_tool.py          # GitHub API integration
+│   │   └── vscode_tool.py          # Local VSCode actions
+│   ├── core/
+│   │   └── mcp.py                  # Shared FastMCP instance
+│   └── server.py                   # MCP server entrypoint
+├── secrets/
+│   └── credentials.google.json     # OAuth2 credentials (create manually)
+├── data/
+│   └── token.google.json           # Token generated after the first auth flow
+├── pyproject.toml
+└── .env.example
+```
+
+---
+
+## Requirements
+
+- Python **3.10+**
+- Node.js **18+** (only for the optional MCP Inspector)
+- Google Cloud account with OAuth2 credentials
+- Personal GitHub token with `repo` scope
+- Visual Studio Code with **Copilot / Codex** enabled
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/Ricardouchub/mcp-hub-ricardo.git
+cd mcp-hub-ricardo
+uv sync
+uv pip install -e .
+```
+
+---
+
+## Google Authentication
+
+1. Create OAuth2 credentials in Google Cloud Console.
+2. Download the `credentials.json` file.
+3. Save it as `secrets/credentials.google.json`.
+4. Run any Google tool for the first time (for example `calendar_upcoming`) to trigger the authorization flow.
+5. Once completed, a persistent token is stored in `data/token.google.json` (if you change scopes, delete this file and repeat the flow).
+
+---
+
+## Local Execution
+
+```
+uv run mcp dev mcp_hub/server.py
+```
+
+This opens the **MCP Inspector** to test tools and verify responses.
+
+Production / STDIO mode:
+
+```
+uv run mcp run stdio mcp_hub/server.py
+```
+
+---
+
+## Stack
+
+- Python 3.10+ with [uv](https://github.com/astral-sh/uv) for environment management and execution.
+- [FastMCP](https://github.com/modelcontextprotocol/servers) as the MCP framework.
+- Google API Client (`google-api-python-client`, `google-auth-oauthlib`) for Gmail/Calendar/Drive.
+- [PyGithub](https://pygithub.readthedocs.io/) for GitHub interactions.
+- Official VSCode CLI (`code`) for local actions.
+
+---
+
+## Examples 
+
+### Copilot (VSCode)
+<img width="700" src="img/Copilot_example.png" alt="Main"/>
+
+### Claude (desktop)
+<img width="400" src="img/Claude_example.png" alt="Main"/> 
+
+### Codex (VSCode)
+<img width="400" src="img/Codex_example.png" alt="Main"/>
+
+## MCP Inspector
+<img width="700" src="img/Mpc_inspector.png" alt="Main"/>
+
+
+---
+
+## Author
+
+**Ricardo Urdaneta**
+
+[LinkedIn](https://www.linkedin.com/in/ricardourdanetacastro/) | [GitHub](https://github.com/Ricardouchub)
