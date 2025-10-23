@@ -1,3 +1,9 @@
+<p align="right">
+  <a href="https://github.com/Ricardouchub/mcp-hub-ricardo/blob/master/README-english.md">
+    README English
+  </a>
+</p>
+
 # MCP Hub Personal
 
 ![Status](https://img.shields.io/badge/Status-Active-22C55E?logo=statuspage&logoColor=white)
@@ -140,11 +146,6 @@ uv run mcp run stdio mcp_hub/server.py
 ## MCP Inspector
 
 <img width="700" src="img/Mpc_inspector.png" alt="Main"/>
-
-
----
-
-*Proximamente: roadmap*
 
 ---
 
