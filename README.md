@@ -122,6 +122,92 @@ uv run mcp run stdio mcp_hub/server.py
 
 ---
 
+## Integración a clientes
+
+
+### 1) Codex
+
+Codex lee la configuración MCP desde `~/.codex/config.toml` (se comparte entre la CLI y la extensión del IDE).
+
+#### `~/.codex/config.toml`
+```toml
+[mcp_servers.mcp_hub_ricardo]
+# Ajusta el ejecutable según tu OS
+# Windows:
+command = "PROJECT_ROOT/.venv/Scripts/mcp.exe"
+# macOS/Linux:
+# command = "PROJECT_ROOT/.venv/bin/mcp"
+
+args = ["run", "--transport", "stdio", "PROJECT_ROOT/mcp_hub/server.py"]
+cwd  = "PROJECT_ROOT"
+
+[mcp_servers.mcp_hub_ricardo.env]
+GOOGLE_CREDENTIALS_PATH = "PROJECT_ROOT/secrets/credentials.google.json"
+GOOGLE_TOKEN_PATH       = "PROJECT_ROOT/data/token.google.json"
+GOOGLE_SCOPES           = "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly"
+GITHUB_TOKEN            = "YOUR_GITHUB_TOKEN"
+```
+
+
+### 2) Claude Desktop
+
+Claude Desktop usa `%APPDATA%/Claude/claude_desktop_config.json` (Windows) o `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS). Tras editar, **reinicia** Claude Desktop.
+
+#### `claude_desktop_config.json`
+```json
+{
+  "mcpServers": {
+    "mcp-hub-ricardo": {
+      "command": "PROJECT_ROOT/.venv/Scripts/mcp.exe",
+      "args": [
+        "run",
+        "--transport",
+        "stdio",
+        "PROJECT_ROOT/mcp_hub/server.py"
+      ],
+      "cwd": "PROJECT_ROOT",
+      "env": {
+        "GOOGLE_CREDENTIALS_PATH": "PROJECT_ROOT/secrets/credentials.google.json",
+        "GOOGLE_TOKEN_PATH": "PROJECT_ROOT/data/token.google.json",
+        "GOOGLE_SCOPES": "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly",
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    }
+  }
+}
+```
+
+### 3) VS Code + Copilot
+
+Abre el Command Palette y ejecuta: **MCP: Open User Configuration**
+
+
+```json
+{
+  "servers": {
+    "mcp-hub-ricardo": {
+      "type": "stdio",
+      "command": "PROJECT_ROOT/.venv/Scripts/mcp.exe",
+      "args": ["run", "--transport", "stdio", "PROJECT_ROOT/mcp_hub/server.py"],
+      "cwd": "PROJECT_ROOT",
+      "env": {
+        "GOOGLE_CREDENTIALS_PATH": "PROJECT_ROOT/secrets/credentials.google.json",
+        "GOOGLE_TOKEN_PATH": "PROJECT_ROOT/data/token.google.json",
+        "GOOGLE_SCOPES": "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly",
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    }
+  }
+}
+```
+
+**Pasos en VS Code**:
+1. Asegúrate de tener VS Code actualizado y acceso a Copilot.  
+2. **Copilot Chat**, haz clic en la herramienta de **selección de tools** y habilita las herramientas del servidor **mcp-hub-ricardo**. 
+
+
+---
+
 ## Stack
 
 - Python 3.10+ con [uv](https://github.com/astral-sh/uv) para gestion de entorno y ejecucion.
