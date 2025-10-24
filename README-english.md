@@ -29,13 +29,13 @@ The entire server is built on **FastMCP**, without Docker or additional external
 
 ## Tool List
 
-| Service | Tools | API/CLI |
-|---------|-------|---------|
-| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 |
-| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 |
-| Drive | `drive_search`, `drive_create_file`, `drive_update_file`, `drive_download_file`, `drive_delete_file`, `drive_share_file` | Drive API v3 |
-| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub |
-| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) |
+| Service | Tools | API/CLI | Permissions |
+|---------|-------|---------|-------------|
+| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 | `gmail.readonly`, `gmail.modify`, `gmail.send` |
+| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 | `calendar` |
+| Drive | `drive_search`, `drive_create_file`, `drive_update_file`, `drive_download_file`, `drive_delete_file`, `drive_share_file` | Drive API v3 | `drive`, `drive.metadata.readonly` |
+| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub | `repo` |
+| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) | Local CLI |
 
 ---
 
@@ -109,6 +109,89 @@ Production / STDIO mode:
 ```
 uv run mcp run stdio mcp_hub/server.py
 ```
+
+---
+
+## Client Integration
+
+### 1) Codex
+
+Codex reads the MCP configuration from `~/.codex/config.toml` 
+
+#### `~/.codex/config.toml`
+```toml
+[mcp_servers.mcp_hub_ricardo]
+# Adjust the executable depending on your OS
+# Windows:
+command = "PROJECT_ROOT/.venv/Scripts/mcp.exe"
+# macOS/Linux:
+# command = "PROJECT_ROOT/.venv/bin/mcp"
+
+args = ["run", "--transport", "stdio", "PROJECT_ROOT/mcp_hub/server.py"]
+cwd  = "PROJECT_ROOT"
+
+[mcp_servers.mcp_hub_ricardo.env]
+GOOGLE_CREDENTIALS_PATH = "PROJECT_ROOT/secrets/credentials.google.json"
+GOOGLE_TOKEN_PATH       = "PROJECT_ROOT/data/token.google.json"
+GOOGLE_SCOPES           = "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly"
+GITHUB_TOKEN            = "YOUR_GITHUB_TOKEN"
+```
+
+### 2) Claude Desktop
+
+Claude Desktop uses `%APPDATA%/Claude/claude_desktop_config.json` (Windows) or `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS). After editing, **restart** Claude Desktop.
+
+#### `claude_desktop_config.json`
+```json
+{
+  "mcpServers": {
+    "mcp-hub-ricardo": {
+      "command": "PROJECT_ROOT/.venv/Scripts/mcp.exe",
+      "args": [
+        "run",
+        "--transport",
+        "stdio",
+        "PROJECT_ROOT/mcp_hub/server.py"
+      ],
+      "cwd": "PROJECT_ROOT",
+      "env": {
+        "GOOGLE_CREDENTIALS_PATH": "PROJECT_ROOT/secrets/credentials.google.json",
+        "GOOGLE_TOKEN_PATH": "PROJECT_ROOT/data/token.google.json",
+        "GOOGLE_SCOPES": "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly",
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    }
+  }
+}
+```
+
+### 3) VS Code + Copilot
+
+Open the Command Palette and run **MCP: Open User Configuration**.
+
+#### `mcp.json`
+```json
+{
+  "servers": {
+    "mcp-hub-ricardo": {
+      "type": "stdio",
+      "command": "PROJECT_ROOT/.venv/Scripts/mcp.exe",
+      "args": ["run", "--transport", "stdio", "PROJECT_ROOT/mcp_hub/server.py"],
+      "cwd": "PROJECT_ROOT",
+      "env": {
+        "GOOGLE_CREDENTIALS_PATH": "PROJECT_ROOT/secrets/credentials.google.json",
+        "GOOGLE_TOKEN_PATH": "PROJECT_ROOT/data/token.google.json",
+        "GOOGLE_SCOPES": "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly",
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    }
+  }
+}
+```
+
+**Steps in VS Code**:
+1. Make sure VS Code is up to date and you have access to Copilot.  
+2. In **Copilot Chat**, open the **tool selection** pane and enable the tools exposed by **mcp-hub-ricardo**.  
 
 ---
 
