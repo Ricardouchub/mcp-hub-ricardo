@@ -127,7 +127,7 @@ uv run mcp run stdio mcp_hub/server.py
 
 ### 1) Codex
 
-Codex lee la configuración MCP desde `~/.codex/config.toml` (se comparte entre la CLI y la extensión del IDE).
+Codex lee la configuración MCP desde `~/.codex/config.toml` 
 
 #### `~/.codex/config.toml`
 ```toml
@@ -181,6 +181,7 @@ Claude Desktop usa `%APPDATA%/Claude/claude_desktop_config.json` (Windows) o `~/
 
 Abre el Command Palette y ejecuta: **MCP: Open User Configuration**
 
+#### `mcp.json`
 
 ```json
 {
