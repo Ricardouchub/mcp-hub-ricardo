@@ -29,13 +29,13 @@ The entire server is built on **FastMCP**, without Docker or additional external
 
 ## Tool List
 
-| Service | Tools | API/CLI | Permissions |
-|---------|-------|---------|-------------|
-| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 | `gmail.readonly`, `gmail.modify`, `gmail.send` |
-| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 | `calendar` |
-| Drive | `drive_search`, `drive_create_file`, `drive_update_file`, `drive_download_file`, `drive_delete_file`, `drive_share_file` | Drive API v3 | `drive`, `drive.metadata.readonly` |
-| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub | `repo` |
-| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) | Local CLI |
+| Service | Tools | API/CLI |
+|---------|-------|---------|
+| Gmail | `gmail_list_unread`, `gmail_search_messages`, `gmail_get_message`, `gmail_modify_message`, `gmail_mark_as_read`, `gmail_send_message` | Gmail API v1 |
+| Calendar | `calendar_upcoming`, `calendar_create_event`, `calendar_update_event`, `calendar_delete_event`, `calendar_export_event` | Calendar API v3 |
+| Drive | `drive_search`, `drive_create_file`, `drive_update_file`, `drive_download_file`, `drive_delete_file`, `drive_share_file` | Drive API v3 |
+| GitHub | `github_list_repos`, `github_create_issue`, `github_list_pull_requests`, `github_create_pull_request`, `github_merge_pull_request`, `github_create_branch`, `github_commit_file`, `github_list_releases`, `github_create_release` | PyGithub |
+| VSCode | `vscode_open`, `vscode_open_file`, `vscode_install_ext`, `vscode_list_extensions`, `vscode_search_text`, `vscode_run_command`, `vscode_git_status` | VSCode CLI (`code`) |
 
 ---
 
@@ -192,16 +192,6 @@ Open the Command Palette and run **MCP: Open User Configuration**.
 **Steps in VS Code**:
 1. Make sure VS Code is up to date and you have access to Copilot.  
 2. In **Copilot Chat**, open the **tool selection** pane and enable the tools exposed by **mcp-hub-ricardo**.  
-
----
-
-## Stack
-
-- Python 3.10+ with [uv](https://github.com/astral-sh/uv) for environment management and execution.
-- [FastMCP](https://github.com/modelcontextprotocol/servers) as the MCP framework.
-- Google API Client (`google-api-python-client`, `google-auth-oauthlib`) for Gmail/Calendar/Drive.
-- [PyGithub](https://pygithub.readthedocs.io/) for GitHub interactions.
-- Official VSCode CLI (`code`) for local actions.
 
 ---
 
