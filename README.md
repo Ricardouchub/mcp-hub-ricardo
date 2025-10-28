@@ -19,7 +19,7 @@
 
 
 
-**MCP Server personal** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) con clientes compatibles como **VSCode Copilot**, **Codex** y **Claude for Desktop**.
+**MCP Server personal** para integrar herramientas de uso cotidiano (Gmail, Google Calendar, Drive, VSCode y GitHub) con clientes compatibles como **Github Copilot**, **Codex** y **Claude for Desktop**.
 
 ---
 
@@ -177,7 +177,7 @@ Claude Desktop usa `%APPDATA%/Claude/claude_desktop_config.json` (Windows) o `~/
 }
 ```
 
-### 3) VS Code + Copilot
+### 3) Github Copilot
 
 Abre el Command Palette y ejecuta: **MCP: Open User Configuration**
 
