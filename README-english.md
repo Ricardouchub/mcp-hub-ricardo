@@ -9,7 +9,7 @@
 ![Codex](https://img.shields.io/badge/Codex-Client-6B7280?logo=apachespark&logoColor=white)
 ![Claude](https://img.shields.io/badge/Claude-Client-8A2BE2?logo=anthropic&logoColor=white)
 
-**Personal MCP Server** to integrate everyday tools (Gmail, Google Calendar, Drive, VSCode, and GitHub) with clients such as **VSCode Copilot**, **Codex**, and **Claude for Desktop**.
+**Personal MCP Server** to integrate everyday tools (Gmail, Google Calendar, Drive, VSCode, and GitHub) with clients such as **Github Copilot**, **Codex**, and **Claude for Desktop**.
 
 ---
 
@@ -165,7 +165,7 @@ Claude Desktop uses `%APPDATA%/Claude/claude_desktop_config.json` (Windows) or `
 }
 ```
 
-### 3) VS Code + Copilot
+### 3) Github Copilot
 
 Open the Command Palette and run **MCP: Open User Configuration**.
 
