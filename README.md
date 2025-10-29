@@ -49,7 +49,7 @@ Todo el servidor esta construido con el framework **FastMCP**, sin depender de D
 
 ---
 
-## Arquitectura
+## Estructura del repositorio
 
 ```
 mcp-hub-ricardo/
