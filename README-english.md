@@ -39,7 +39,7 @@ The entire server is built on **FastMCP**, without Docker or additional external
 
 ---
 
-## Architecture
+## Repo Structure
 
 ```
 mcp-hub-ricardo/
