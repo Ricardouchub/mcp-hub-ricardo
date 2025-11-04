@@ -132,7 +132,6 @@ Codex lee la configuración MCP desde `~/.codex/config.toml`
 #### `~/.codex/config.toml`
 ```toml
 [mcp_servers.mcp_hub_ricardo]
-# Ajusta el ejecutable según tu OS
 # Windows:
 command = "PROJECT_ROOT/.venv/Scripts/mcp.exe"
 # macOS/Linux:
@@ -145,7 +144,7 @@ cwd  = "PROJECT_ROOT"
 GOOGLE_CREDENTIALS_PATH = "PROJECT_ROOT/secrets/credentials.google.json"
 GOOGLE_TOKEN_PATH       = "PROJECT_ROOT/data/token.google.json"
 GOOGLE_SCOPES           = "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly"
-GITHUB_TOKEN            = "YOUR_GITHUB_TOKEN"
+GITHUB_TOKEN            = "GITHUB_TOKEN"
 ```
 
 
@@ -170,7 +169,7 @@ Claude Desktop usa `%APPDATA%/Claude/claude_desktop_config.json` (Windows) o `~/
         "GOOGLE_CREDENTIALS_PATH": "PROJECT_ROOT/secrets/credentials.google.json",
         "GOOGLE_TOKEN_PATH": "PROJECT_ROOT/data/token.google.json",
         "GOOGLE_SCOPES": "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly",
-        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+        "GITHUB_TOKEN": "GITHUB_TOKEN"
       }
     }
   }
@@ -195,7 +194,7 @@ Abre el Command Palette y ejecuta: **MCP: Open User Configuration**
         "GOOGLE_CREDENTIALS_PATH": "PROJECT_ROOT/secrets/credentials.google.json",
         "GOOGLE_TOKEN_PATH": "PROJECT_ROOT/data/token.google.json",
         "GOOGLE_SCOPES": "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.metadata.readonly",
-        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+        "GITHUB_TOKEN": "GITHUB_TOKEN"
       }
     }
   }
